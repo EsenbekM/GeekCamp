@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    {% for i in all_items %}
+        <ul>{{ i.content }}</ul>
+        <form action="/deleteTodoItem/{{i.id}}/" method = "post">
+            {% csrf_token %}
+            <button type="submit" value="Delete" class="btn btn-danger">Delete</button>
+        </form> 
+    {% endfor %}
+
+    <form action="/todo/additem/" method="post">
+        {% csrf_token %}
+        <input type="text" name="content">
+        <button type="submit" value="Add item" >SAVE</button>
+    </form>
+</body>
+</html>
